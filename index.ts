@@ -11,7 +11,7 @@ const trad = new TradfriClient(process.env.ADDR as string)
 const saveDevice = (device: Accessory) => {
     if (device.lightList && device.lightList.length > 0) {
         lights.set(device.instanceId, device)
-        console.log(device.lightList[0].color)
+        console.log("Device Updated: ", device.lightList[0].color)
     }
 }
 
@@ -26,7 +26,7 @@ const connectTrad = async () => {
 
 
 
-connectTrad().then(_ => console.log("trad connected"))
+connectTrad().then(_ => console.log("Tradfri Gateway Connected"))
 
 const socket = dgram.createSocket('udp4')
 
@@ -55,7 +55,7 @@ socket.on('message', (msg, rinfo) => {
 
 socket.on('listening', () => {
     const address = socket.address();
-    console.log(`server listening ${address.address}:${address.port}`);
+    console.log(`server listening on UDP PORT ${address.address}:${address.port}`);
 });
 
 socket.bind(9000)
