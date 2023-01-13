@@ -1,5 +1,7 @@
 FROM node:18
 
+LABEL org.opencontainers.image.source https://github.com/trevorsargent/tradfri
+
 COPY ./ ./
 
 RUN npm i
